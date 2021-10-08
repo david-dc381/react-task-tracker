@@ -26,7 +26,7 @@ function App() {
   // Fetch Tasks
   const fetchTasks = async () => {
     // esperamos una respuesta de el localhost y luego una respuesta de su json
-    const res = await fetch("https://react-task-tracker-1/tasks");  /* http://localhost:5000/tasks, alternativa de localhost */
+    const res = await fetch("https://react-task-tracker-1.netlify.app/tasks");  /* http://localhost:5000/tasks, alternativa de localhost */
     const data = await res.json();
 
     return data;
@@ -36,7 +36,7 @@ function App() {
   el cambio de true o false al hacer click, para que se guarde con ese valor en el json. */
   const fetchTask = async (id) => {
     // esperamos una respuesta de el localhost y luego una respuesta de su json
-    const res = await fetch(`https://react-task-tracker-1/tasks/${id}`);
+    const res = await fetch(`https://react-task-tracker-1.netlify.app/tasks/${id}`);
     const data = await res.json();
 
     return data;
@@ -44,7 +44,7 @@ function App() {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch(`https://react-task-tracker-1/tasks`, {
+    const res = await fetch(`https://react-task-tracker-1.netlify.app/tasks`, {
       /* mandamos por POST un nuevo task y en el header le decimos que es un tipo de task
       json el que se envia  */
       method: "POST",
@@ -75,7 +75,7 @@ function App() {
   const deleteTask = async (id) => {
     /* usamos un async y await, para borrar de el server accediendo al json, para eliminarlo con
     el método DELETE y así eliminar los elemento preescritos en el ui */
-    await fetch(`https://react-task-tracker/tasks-1/${id}`, {
+    await fetch(`https://react-task-tracker-1.netlify.app/tasks/${id}`, {
       method: "DELETE",
     });
 
@@ -102,7 +102,7 @@ function App() {
     }
 
     // hacemos un fetch, la petición de el taks especifíco, de el server 
-    const res = await fetch(`https://react-task-tracker/tasks-1/${id}`, {
+    const res = await fetch(`https://react-task-tracker-1.netlify.app/tasks-1/${id}`, {
       // Usamos el PUT para actualizar el estado del reminder
       method: 'PUT',
       headers: {
