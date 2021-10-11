@@ -26,7 +26,9 @@ function App() {
   // Fetch Tasks
   const fetchTasks = async () => {
     // esperamos una respuesta de el localhost y luego una respuesta de su json
-    const res = await fetch("https://react-task-tracker-1.netlify.app/tasks/");  /* http://localhost:5000/tasks, alternativa de localhost */
+    const res = await fetch(
+      "https://react-task-app-tracker.herokuapp.com/tasks"
+    );  /* http://localhost:5000/tasks, alternativa de localhost */
     const data = await res.json();
 
     return data;
@@ -37,7 +39,7 @@ function App() {
   const fetchTask = async (id) => {
     // esperamos una respuesta de el localhost y luego una respuesta de su json
     const res = await fetch(
-      `https://react-task-tracker-1.netlify.app/tasks/${id}`
+      `https://react-task-app-tracker.herokuapp.com/tasks/${id}`
     );
     const data = await res.json();
 
@@ -46,17 +48,20 @@ function App() {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch(`https://react-task-tracker-1.netlify.app/tasks/`, {
-      /* mandamos por POST un nuevo task y en el header le decimos que es un tipo de task
+    const res = await fetch(
+      `https://react-task-app-tracker.herokuapp.com/tasks`,
+      {
+        /* mandamos por POST un nuevo task y en el header le decimos que es un tipo de task
       json el que se envia  */
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      /* en el body, donde se mandará el puro texto por el form, a ese texto del nuevo task lo
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        /* en el body, donde se mandará el puro texto por el form, a ese texto del nuevo task lo
       convertimos en un JSON, para que se almacene en el archivo db.json */
-      body: JSON.stringify(task),
-    });
+        body: JSON.stringify(task),
+      }
+    );
 
     // esperamos que todo lo de arriba responda correctamente
     const data = await res.json();
@@ -77,7 +82,7 @@ function App() {
   const deleteTask = async (id) => {
     /* usamos un async y await, para borrar de el server accediendo al json, para eliminarlo con
     el método DELETE y así eliminar los elemento preescritos en el ui */
-    await fetch(`https://react-task-tracker-1.netlify.app/tasks/${id}`, {
+    await fetch(`https://react-task-app-tracker.herokuapp.com/tasks/${id}`, {
       method: "DELETE",
     });
 
@@ -105,7 +110,7 @@ function App() {
 
     // hacemos un fetch, la petición de el taks especifíco, de el server 
     const res = await fetch(
-      `https://react-task-tracker-1.netlify.app/tasks/${id}`,
+      `https://react-task-app-tracker.herokuapp.com/tasks/${id}`,
       {
         // Usamos el PUT para actualizar el estado del reminder
         method: "PUT",
