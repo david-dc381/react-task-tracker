@@ -1,12 +1,12 @@
 import Task from "./Task";
 
+// Aqui van las aciones de 'borrar', 'editar' y cambiar el 'reminder'
 const Tasks = ({ tasks, onDelete, onToggle }) => {
   return (
     <>
-      {/* por cada task dentro de los tasks añadimos un h3 con su texto reespectivo */}
-      {tasks.map((task, index) => (
+      {tasks.map((task) => (
         <Task
-          key={task.id} /* key={index}, seria otra opción con en index de arriba */
+          key={task.id}
           task={task}
           onDelete={onDelete}
           onToggle={onToggle}

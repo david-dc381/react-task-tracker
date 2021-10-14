@@ -163,7 +163,7 @@ function App() {
                   onToggle={toggleReminder}
                 />
               ) : (
-                "No Tasks To Show"
+                <h3 style={{ "font-weight": "bold" }}>No Tasks To Show</h3>
               )}
             </>
           )}
