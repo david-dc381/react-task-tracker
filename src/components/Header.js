@@ -1,35 +1,46 @@
-import PropType from "prop-types";
-import { useLocation } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "./Button";
+import PropTypes from 'prop-types';
+// useLocation, nos permite mirar la ruta actual en la que estamos
+import { useLocation } from 'react-router-dom';
+import Button from './Button';
 
 const Header = ({ title, onAdd, showAdd }) => {
+ 
   const location = useLocation();
-  return (
-    <header className="card-title d-flex justify-content-between">
-      <h1>{title}</h1>
 
-      {/* Si estamos en la ruta principal se muestra el btn */}
-      {location.pathname === "/" && (
-        /* onAdd, lo usamos para mostrar el form de registro */
-        <Button
-          buttonOpenClose={onAdd}
-          color={showAdd ? "#fb2d2d" : "#05bf05"}
-          text={showAdd ? "Close" : "Add Task"}
+  return (
+    <header>
+      <h1 className="header">{title}</h1>
+      {/* Preguntamos con un ternario corto '&&',
+      si la ubicación actual es el index es decir '/'
+      entonces que nos muestre el boton Add Task y 
+      no es la ruta principal que no nosmuestre o no haga nada. */}
+      { location.pathname === '/' && (
+        /* oddAdd, para mostrar el formulario */
+        <Button 
+          onClick={onAdd} 
+          color={showAdd ? 'red' : 'green'} 
+          text={showAdd ? 'Close' : 'Add Task'} 
         />
       )}
     </header>
   );
-};
+}
 
-// Mediante el Prop agregamos un título por defecto
+// usamos un prop por defecto para el título, si ponemos en el App.js en Header un title reemplazara este
 Header.defaultProps = {
-  title: "Task Tracker",
-};
+  title: 'Task Tracker',
+}
 
-// Declaramos que el título es requerido y de tipo string
-Header.propType = {
-  title: PropType.string.isRequired,
-};
+// Declaramos que tipos de props debemos enviar, en este caso un string obligatoriamente
 
-export default Header;
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+}
+
+/* 
+  Css in Js, put it in stlye in header tag 
+const headingStyle = {
+  color: 'yellow',
+  backgroundColor: 'black',
+} */
+export default Header

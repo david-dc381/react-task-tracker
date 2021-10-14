@@ -1,25 +1,20 @@
-import { BsXCircleFill } from "react-icons/bs"; //iconos de bootstrap
+import { FaTimes } from 'react-icons/fa';
 
-// Aqui se muestra cada elemento registrado
+
 const Task = ({ task, onDelete, onToggle }) => {
   return (
-    <div
-      // si el reminder es true cambia de color
-      className={`task ${task.reminder ? "reminder" : ""}`}
-      onDoubleClick={() => onToggle(task.id)}
-    >
-      <h3 className="d-flex">
-        {task.text}
-        <BsXCircleFill
-          style={{ color: "rgb(251, 45, 45)", cursor: "pointer" }}
-          onClick={() => onDelete(task.id)}
-          className="mt-3"
-        />
+    // en este className evaluamos si el reminder es true cambia de color, si es falso no cambia de color.
+    <div className={`task ${task.reminder ? 'reminder' : ''}`} onDoubleClick={() => onToggle(task.id)}>
+      <h3>
+       {task.text}{' '}
+       <FaTimes 
+        style={{ color: 'red', cursor: 'pointer' }} 
+        onClick={() => onDelete(task.id) } 
+       />
       </h3>
-
-      <p className="d-flex">{task.day}</p>
+      <p>{task.day}</p>
     </div>
-  );
-};
+  )
+}
 
-export default Task;
+export default Task
